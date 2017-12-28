@@ -1,0 +1,33 @@
+Development of an Agent Checklist
+Install Virtualization program on development machine.
+Install a windows VM into Virtualization program.
+Within Windows VM, map a network drive to local box with the Agent files that were checked out from code.novadine.com/projects/AG/repos/agent
+Download all Dependencies for NDAgent. They are listed in DEPENDENCIES.TXT except the files under Build. Private Assemblies should be placed in home directory of the mapped network drive.
+
+
+Start Posi-Dev VM.
+Make sure that a drive is mapped to the Agent files.
+In the command line switch to that drive -- "X:"
+Then run c:\python27\python.exe NDAgent.py --debug --popup-errors
+find NDAgent_*.log files "dir /s NDAgent_*.log"
+
+Then configure YAML file in c:/ProgramData/NovaDine/NDAgent to include necessary parameters. (POS system, Username, Password, Site URL...etc.)
+Restart Agent.
+Place an order at test store.(If the test store is set up, that is)
+See if order is created in order management system, and that is has turned gray.
+Run export. Monitor NDAgent log files.
+
+
+
+Committing and pushing changes work flow:
+commit normally:
+$git add .
+$git commit -m 'message'
+
+then to push....
+$git fetch
+$git rebase origin/positouch
+then check the log to see if the path origin/positouch is there
+$git push
+
+
